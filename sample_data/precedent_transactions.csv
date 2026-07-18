@@ -1,0 +1,6 @@
+target,acquirer,announced_year,market,sector,transaction_value,transaction_value_unit,ev_revenue_multiple,ev_ebitda_multiple,rationale,source
+QuickBasket,OmniRetail,2022,IN,Consumer Internet,4100,INR crore,5.8,NM,Quick-commerce capability acquisition,Synthetic portfolio source
+GroceryHub,Nova Digital,2021,IN,Consumer Internet,1.6,USD billion,3.7,NM,Online grocery ecosystem expansion,Synthetic portfolio source
+FashionCart,MegaCommerce,2019,IN,Consumer Internet,250,USD million,4.4,NM,Fashion e-commerce scale acquisition,Synthetic portfolio source
+PayWave,AxisNova,2020,IN,Fintech,350,INR crore,2.3,NM,Digital payments acquisition,Synthetic portfolio source
+EventPass,AstraFood Technologies,2024,IN,Consumer Internet,220,USD million,4.9,NM,Expansion into events and going-out use cases,Synthetic portfolio source
