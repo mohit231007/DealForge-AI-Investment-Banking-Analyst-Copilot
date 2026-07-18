@@ -11,6 +11,14 @@ DealForge AI demonstrates how I translate an investment-banking workflow into a 
 ![Streamlit](https://img.shields.io/badge/UI-Streamlit-red)
 ![Finance](https://img.shields.io/badge/Domain-Investment%20Banking-0B1F33)
 
+## Two-minute recruiter review
+
+1. Read the [portfolio case study](docs/CASE_STUDY.md).
+2. Inspect the [sample adjusted valuation summary](sample_outputs/adjusted_valuation_summary.json).
+3. Read the [sample investment memo](sample_outputs/investment_memo.md).
+4. Review the [architecture](docs/ARCHITECTURE.md) and [interview guide](docs/INTERVIEW_GUIDE.md).
+5. Run `streamlit run app.py` for the interactive workflow.
+
 ## Why I built it
 
 Investment teams do not only need dashboards or chatbots. They need repeatable work products with traceable assumptions, visible exclusions, review warnings, and consistent outputs across memos, models, and decks.
@@ -111,6 +119,8 @@ All included company, peer, and transaction names are fictional. The sample data
 - mixed transaction-unit review warnings;
 - source-verification flags.
 
+The included synthetic case produces an adjusted EV range of **INR 45,000–80,000 crore** after QA exclusions. This is a workflow demonstration, not a real company valuation.
+
 ## Important limitations
 
 - The public edition does not ingest confidential data rooms.
@@ -126,6 +136,7 @@ All included company, peer, and transaction names are fictional. The sample data
 - [Interview guide](docs/INTERVIEW_GUIDE.md)
 - [Public/private product boundary](docs/PRODUCT_BOUNDARY.md)
 - [Security and limitations](SECURITY.md)
+- [Portfolio evaluation notice](NOTICE.md)
 
 ## About the builder
 
