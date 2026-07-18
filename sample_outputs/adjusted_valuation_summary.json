@@ -1,0 +1,40 @@
+{
+  "status": "PASS_WITH_REVIEW_ITEMS",
+  "company": "AstraFood Technologies Ltd",
+  "ticker": "ASTRA",
+  "market": "IN",
+  "sector": "Consumer Internet",
+  "target_revenue": 12500.0,
+  "target_ebitda": 750.0,
+  "target_unit": "crore",
+  "original_medians": {
+    "comps_ev_revenue": 7.6,
+    "comps_ev_ebitda": 72.0,
+    "precedent_ev_revenue": 4.4,
+    "precedent_ev_ebitda": null
+  },
+  "adjusted_medians": {
+    "comps_ev_revenue": 6.4,
+    "comps_ev_ebitda": 60.0,
+    "precedent_ev_revenue": 4.65,
+    "precedent_ev_ebitda": null
+  },
+  "adjusted_implied_enterprise_values": {
+    "comps_revenue_method": 80000.0,
+    "comps_ebitda_method": 45000.0,
+    "precedent_revenue_method": 58125.0,
+    "precedent_ebitda_method": null,
+    "range": {
+      "low": 45000.0,
+      "high": 80000.0
+    },
+    "unit": "crore"
+  },
+  "included_peer_count": 4,
+  "excluded_peer_count": 1,
+  "included_precedent_count": 4,
+  "excluded_precedent_count": 1,
+  "source_verification_status": "NEEDS_REVIEW",
+  "unit_normalization_status": "NEEDS_NORMALIZATION",
+  "disclaimer": "Portfolio demonstration only. Human review required. Not investment advice."
+}
