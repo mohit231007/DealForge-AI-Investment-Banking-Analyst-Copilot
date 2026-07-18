@@ -1,0 +1,6 @@
+company,ticker,market,sector,business_model,ev_revenue_multiple,ev_ebitda_multiple,source,notes
+AstraFood Technologies Ltd,ASTRA,IN,Consumer Internet,Food delivery and quick commerce,14.8,220,Synthetic portfolio source,Target reference row intentionally included for QA
+SwiftServe Ltd,SWIFT,IN,Consumer Internet,Food delivery and quick commerce,5.2,NM,Synthetic portfolio source,Closest operating model peer
+BeautyLoop Ltd,BEAUTY,IN,Consumer Internet,Beauty and fashion e-commerce,7.6,72,Synthetic portfolio source,Consumer e-commerce peer
+PlatformEdge Ltd,PLATFORM,IN,Consumer Internet,Online classifieds and marketplace,15.8,48,Synthetic portfolio source,High-quality platform peer
+LogiGrid Ltd,LOGI,IN,Consumer Internet,Technology-enabled logistics,3.9,NM,Synthetic portfolio source,Adjacent logistics platform
