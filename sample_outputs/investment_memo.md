@@ -2,7 +2,7 @@
 
 ## Executive conclusion
 
-DealForge AI produced a review-ready valuation scaffold for **AstraFood Technologies Ltd**. The adjusted valuation set retains four comparable companies and four precedent transactions after removing the target-company reference row and one off-sector transaction.
+DealForge AI produced a banker-style public portfolio deal pack for **AstraFood Technologies Ltd**. The portfolio-plus workflow validates synthetic financial inputs, builds a source index and citation map, audits peer and precedent inputs, generates adjustment recommendations, creates corrected CSV workpapers, and packages an Excel model, PowerPoint pitchbook, memo, IC memo, diligence list, consistency report, and checksum manifest.
 
 ## Original versus adjusted valuation
 
@@ -29,6 +29,7 @@ DealForge AI produced a review-ready valuation scaffold for **AstraFood Technolo
 - Target-company self-inclusion was removed from the peer median.
 - The off-sector Fintech transaction was removed from the precedent median.
 - `NM` EBITDA rows remained usable for EV/Revenue but were excluded from EV/EBITDA.
+- The generated review workpaper is `23_adjusted_valuation_summary.json`.
 
 ## Recommendation
 
