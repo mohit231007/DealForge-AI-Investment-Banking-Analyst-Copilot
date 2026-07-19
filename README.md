@@ -11,6 +11,40 @@ DealForge AI demonstrates how I translate an investment-banking workflow into a 
 ![Streamlit](https://img.shields.io/badge/UI-Streamlit-red)
 ![Finance](https://img.shields.io/badge/Domain-Investment%20Banking-0B1F33)
 
+## Visual walkthrough
+
+### Banker-style control tower
+
+![DealForge AI dashboard](assets/01_streamlit_dashboard.png)
+
+### Valuation QA and review controls
+
+![Valuation QA](assets/02_valuation_qa.png)
+
+### Source confidence and audit posture
+
+![Source confidence](assets/03_source_confidence.png)
+
+### Comparable-company QA
+
+![Comparable-company QA](assets/04_comps_analysis.png)
+
+### Precedent-transaction QA
+
+![Precedent transaction QA](assets/05_precedent_transactions.png)
+
+### Generated artifacts and downloadable deal pack
+
+![Generated artifacts](assets/06_downloads_artifacts.png)
+
+### Excel valuation model
+
+![Excel valuation model](assets/07_excel_model.png)
+
+### PowerPoint pitchbook
+
+![PowerPoint pitchbook](assets/08_pitchbook.png)
+
 ## Two-minute recruiter review
 
 1. Run `streamlit run app.py` to view the banker-style control tower.
