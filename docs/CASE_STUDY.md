@@ -2,19 +2,19 @@
 
 ## Problem
 
-Investment-banking and investment-team workflows require more than a model or dashboard. Analysts must reconcile financial inputs, select comparable companies, review precedent transactions, document exclusions, triangulate valuation outputs, and communicate the result consistently across Excel, PowerPoint, memos, and diligence lists.
+Investment-banking and investment-team workflows require more than a model or dashboard. Analysts must reconcile financial inputs, select comparable companies, review precedent transactions, document exclusions, triangulate valuation outputs, and communicate the result consistently across Excel, PowerPoint, memos, audit trails, source maps, and diligence lists.
 
 ## My approach
 
 I designed DealForge AI as a work-product compiler rather than a generic finance chatbot.
 
-The portfolio edition accepts three structured inputs:
+The public portfolio-plus edition accepts three structured synthetic inputs:
 
 1. selected company financial metrics;
 2. comparable-company trading multiples;
 3. precedent-transaction multiples and values.
 
-It then applies explicit review rules, produces original and adjusted medians, calculates directional implied enterprise values, and packages the results into analyst-friendly artifacts.
+It then creates a DealForge-style public-safe deal pack: source index, citation map, financial extract, comps analysis, precedent analysis, source confidence, valuation input audit, adjustment recommendations, corrected CSV workpapers, adjusted valuation summary, consistency checks, Excel workbook, PowerPoint pitchbook, investment memo, IC memo, diligence request list, manifest, and ZIP bundle.
 
 ## Key product decisions
 
@@ -30,13 +30,17 @@ A row can remain in the EV/Revenue set while being excluded from EV/EBITDA becau
 
 The public edition does not silently convert transaction values without valuation dates and FX assumptions. It returns `NEEDS_NORMALIZATION`.
 
-### 4. Outputs are consistent
+### 4. Source confidence is explicit
 
-The same adjusted valuation summary feeds the memo, Excel model, pitchbook, diligence request list, JSON output, and downloadable bundle.
+The source-confidence artifact tells reviewers that synthetic portfolio inputs are safe for demonstration but require replacement before any real banking use.
 
-### 5. Public and commercial IP are separated
+### 5. Outputs are consistent across artifacts
 
-This repository is deliberately synthetic and compact. The private Algosphere edition is being developed as a broader product with workspace persistence, document ingestion, source lineage, user management, billing, and enterprise controls.
+The same adjusted valuation summary feeds the memo, IC memo, Excel model, pitchbook, diligence request list, validation report, and downloadable bundle.
+
+### 6. Public and commercial IP are separated
+
+This repository is synthetic and public-safe. The private Algosphere edition can move much further with AI integrations, document intelligence, persistent workspaces, user accounts, approvals, security controls, and monetization.
 
 ## Results demonstrated by the sample case
 
@@ -45,7 +49,8 @@ The synthetic sample intentionally contains:
 - the target company inside its own peer set;
 - two peers with `NM` EBITDA;
 - one off-sector precedent transaction;
-- transaction values in INR crore, USD million, and USD billion.
+- transaction values in INR crore, USD million, and USD billion;
+- synthetic source notes that require source replacement.
 
 The engine correctly:
 
@@ -53,13 +58,17 @@ The engine correctly:
 - retains valid EV/Revenue observations while excluding `NM` EBITDA observations;
 - removes the off-sector transaction;
 - recalculates adjusted trading and transaction medians;
-- produces an adjusted EV range;
-- flags source and transaction-unit review requirements.
+- produces an adjusted EV range of INR 45,000–80,000 crore;
+- creates valuation audit warnings and adjustment recommendations;
+- generates corrected peer and precedent workpapers;
+- flags source and transaction-unit review requirements;
+- packages the full output into a checksum-verified ZIP deal pack.
 
 ## Skills demonstrated
 
 - investment-banking workflow understanding;
 - valuation and comparable-company logic;
+- source lineage and auditability;
 - Python architecture and data validation;
 - Excel automation with OpenPyXL;
 - PowerPoint automation with python-pptx;
