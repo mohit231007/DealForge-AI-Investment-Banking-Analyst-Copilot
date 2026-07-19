@@ -1,5 +1,5 @@
 {
-  "status": "PASS_WITH_REVIEW_ITEMS",
+  "status": "PASS_WITH_RECOMMENDATIONS",
   "company": "AstraFood Technologies Ltd",
   "ticker": "ASTRA",
   "market": "IN",
@@ -7,13 +7,13 @@
   "target_revenue": 12500.0,
   "target_ebitda": 750.0,
   "target_unit": "crore",
-  "original_medians": {
+  "original_valuation_medians": {
     "comps_ev_revenue": 7.6,
     "comps_ev_ebitda": 72.0,
     "precedent_ev_revenue": 4.4,
     "precedent_ev_ebitda": null
   },
-  "adjusted_medians": {
+  "adjusted_valuation_medians": {
     "comps_ev_revenue": 6.4,
     "comps_ev_ebitda": 60.0,
     "precedent_ev_revenue": 4.65,
@@ -30,11 +30,14 @@
     },
     "unit": "crore"
   },
-  "included_peer_count": 4,
-  "excluded_peer_count": 1,
-  "included_precedent_count": 4,
-  "excluded_precedent_count": 1,
+  "included_peer_rows": 4,
+  "excluded_peer_rows": 1,
+  "included_precedent_rows": 4,
+  "excluded_precedent_rows": 1,
   "source_verification_status": "NEEDS_REVIEW",
   "unit_normalization_status": "NEEDS_NORMALIZATION",
-  "disclaimer": "Portfolio demonstration only. Human review required. Not investment advice."
+  "audit_score": 0.32,
+  "audit_warning_count": 13,
+  "recommendation_count": 13,
+  "final_valuation_qa_narrative": "Adjusted valuation keeps 4 peer row(s) and 4 precedent row(s). Source verification is NEEDS_REVIEW; unit normalization is NEEDS_NORMALIZATION. Portfolio demonstration only. Human review required. Not investment advice."
 }
