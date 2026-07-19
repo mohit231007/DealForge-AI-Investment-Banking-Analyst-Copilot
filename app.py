@@ -9,17 +9,115 @@ import streamlit as st
 from dealforge_portfolio import generate_portfolio_pack
 
 
-st.set_page_config(page_title="DealForge AI Portfolio", page_icon="📊", layout="wide")
-
-st.title("DealForge AI — Investment Banking Analyst Copilot")
-st.caption("Portfolio-plus public edition by Mohit Bhatnagar · Synthetic data · Human review required")
+st.set_page_config(
+    page_title="DealForge AI Portfolio",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
 
 st.markdown(
     """
-This public version now mirrors the visible depth of a real DealForge analyst workbench while staying synthetic and safe:
-source pack, citation map, financial extract, comps, precedents, source confidence, valuation audit, adjustment recommendations,
-corrected workpapers, Excel model, PowerPoint pitchbook, memos, diligence list, consistency report, and ZIP bundle.
-"""
+<style>
+    .block-container {padding-top: 2rem; max-width: 1280px;}
+    .deal-hero {
+        padding: 1.25rem 1.35rem;
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(11,31,51,0.85), rgba(18,85,70,0.32));
+        margin-bottom: 1rem;
+    }
+    .deal-eyebrow {
+        color: #99F6E4;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        margin-bottom: 0.25rem;
+    }
+    .deal-title {
+        color: #FFFFFF;
+        font-size: 2.6rem;
+        line-height: 1.08;
+        font-weight: 850;
+        margin: 0;
+    }
+    .deal-subtitle {
+        color: rgba(255,255,255,0.78);
+        font-size: 1.05rem;
+        max-width: 980px;
+        margin-top: 0.75rem;
+    }
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.85rem;
+        margin: 1rem 0 1.1rem 0;
+    }
+    .deal-card {
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 16px;
+        padding: 1rem 1rem 0.95rem 1rem;
+        background: rgba(255,255,255,0.035);
+        min-height: 112px;
+    }
+    .deal-card-label {
+        color: rgba(255,255,255,0.65);
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.055em;
+    }
+    .deal-card-value {
+        color: #FFFFFF;
+        font-size: 1.8rem;
+        font-weight: 850;
+        line-height: 1.15;
+        margin-top: 0.25rem;
+        word-break: normal;
+    }
+    .deal-card-note {
+        color: rgba(255,255,255,0.62);
+        font-size: 0.82rem;
+        margin-top: 0.3rem;
+    }
+    .status-pill {
+        display: inline-block;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 0.83rem;
+        background: rgba(251,191,36,0.18);
+        color: #FDE68A;
+        border: 1px solid rgba(251,191,36,0.35);
+        margin-top: 0.35rem;
+    }
+    .success-pill {
+        display: inline-block;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 0.83rem;
+        background: rgba(34,197,94,0.18);
+        color: #BBF7D0;
+        border: 1px solid rgba(34,197,94,0.35);
+        margin-top: 0.35rem;
+    }
+    .banker-note {
+        border-left: 4px solid #22C55E;
+        padding: 0.85rem 1rem;
+        background: rgba(34,197,94,0.08);
+        border-radius: 12px;
+        margin: 0.5rem 0 1rem 0;
+        color: rgba(255,255,255,0.86);
+    }
+    @media (max-width: 900px) {
+        .card-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
+        .deal-title {font-size: 2rem;}
+    }
+</style>
+""",
+    unsafe_allow_html=True,
 )
 
 with st.sidebar:
@@ -75,21 +173,73 @@ recommendations = summary["valuation_adjustment_recommendations"]
 source_confidence = summary["source_confidence"]
 consistency = summary["consistency_checks"]
 
-st.success("Portfolio-plus deal pack generated")
+st.markdown(
+    f"""
+<div class="deal-hero">
+    <div class="deal-eyebrow">Portfolio-plus public edition · Synthetic banker workbench</div>
+    <h1 class="deal-title">DealForge AI — Investment Banking Analyst Copilot</h1>
+    <div class="deal-subtitle">
+        Built by Mohit Bhatnagar. A public-safe, synthetic finance automation workbench that compiles source pack,
+        citation map, financial extract, comps, precedents, source confidence, valuation audit, adjustment recommendations,
+        corrected workpapers, Excel model, PowerPoint pitchbook, memos, diligence list, consistency report, and ZIP bundle.
+    </div>
+</div>
+<div class="banker-note">
+    <strong>Recruiter / banker takeaway:</strong> DealForge generated a {summary['artifact_count']}-artifact deal pack,
+    removed the target-company peer row, excluded the off-sector precedent, kept NM EBITDA rows out of EBITDA medians,
+    and produced an adjusted EV range of <strong>{ev_range['low']:,.0f}–{ev_range['high']:,.0f} {summary['target_unit']}</strong>.
+</div>
+""",
+    unsafe_allow_html=True,
+)
 
-metrics = st.columns(8)
-metrics[0].metric("Artifacts", summary["artifact_count"])
-metrics[1].metric("Peers retained", summary["included_peer_count"])
-metrics[2].metric("Peers excluded", summary["excluded_peer_count"])
-metrics[3].metric("Precedents retained", summary["included_precedent_count"])
-metrics[4].metric("Audit score", audit["score"])
-metrics[5].metric("Audit warnings", audit["warning_count"])
-metrics[6].metric("Source status", summary["source_verification_status"])
-metrics[7].metric("Unit status", summary["unit_normalization_status"])
-
-st.subheader("Adjusted valuation range")
-st.markdown(f"### {ev_range['low']:,.2f} – {ev_range['high']:,.2f} {summary['target_unit']}")
-st.caption("Workflow demonstration only. Human review required. Not investment advice.")
+st.markdown(
+    f"""
+<div class="card-grid">
+    <div class="deal-card">
+        <div class="deal-card-label">Deal-pack artifacts</div>
+        <div class="deal-card-value">{summary['artifact_count']}</div>
+        <div class="deal-card-note">Excel, PPT, memos, QA JSON, CSVs, ZIP</div>
+    </div>
+    <div class="deal-card">
+        <div class="deal-card-label">Adjusted EV range</div>
+        <div class="deal-card-value">{ev_range['low']:,.0f}–{ev_range['high']:,.0f}</div>
+        <div class="deal-card-note">{summary['target_unit']} · synthetic sample case</div>
+    </div>
+    <div class="deal-card">
+        <div class="deal-card-label">Valuation QA status</div>
+        <div class="deal-card-value">Review-ready</div>
+        <div class="status-pill">{summary['adjusted_valuation_summary']['status']}</div>
+    </div>
+    <div class="deal-card">
+        <div class="deal-card-label">Review flags</div>
+        <div class="deal-card-value">{audit['warning_count']}</div>
+        <div class="deal-card-note">source verification + unit normalization</div>
+    </div>
+    <div class="deal-card">
+        <div class="deal-card-label">Peer-set decision</div>
+        <div class="deal-card-value">{summary['included_peer_count']} kept / {summary['excluded_peer_count']} removed</div>
+        <div class="deal-card-note">target-company row excluded</div>
+    </div>
+    <div class="deal-card">
+        <div class="deal-card-label">Precedent decision</div>
+        <div class="deal-card-value">{summary['included_precedent_count']} kept / {summary['excluded_precedent_count']} removed</div>
+        <div class="deal-card-note">off-sector transaction excluded</div>
+    </div>
+    <div class="deal-card">
+        <div class="deal-card-label">Source verification</div>
+        <div class="deal-card-value">Needs review</div>
+        <div class="status-pill">{summary['source_verification_status']}</div>
+    </div>
+    <div class="deal-card">
+        <div class="deal-card-label">Unit normalization</div>
+        <div class="deal-card-value">Needs review</div>
+        <div class="status-pill">{summary['unit_normalization_status']}</div>
+    </div>
+</div>
+""",
+    unsafe_allow_html=True,
+)
 
 left, right = st.columns(2)
 with left:
@@ -151,6 +301,7 @@ with dashboard_tab:
 - Revenue: **{summary['target_revenue']:,.0f} {summary['target_unit']}**
 - EBITDA: **{summary['target_ebitda']:,.0f} {summary['target_unit']}**
 - Generated output pack: **{summary['artifact_count']} artifacts + ZIP bundle**
+- Professional-use posture: **human review required; not investment advice**
 """
     )
 
@@ -158,7 +309,7 @@ with source_tab:
     st.subheader("Source index")
     st.dataframe(pd.DataFrame(summary["source_index"]["documents"]), use_container_width=True)
     st.subheader("Citation map preview")
-    st.dataframe(pd.DataFrame(summary["source_index"]["documents"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(summary["citation_map"]["citations"]), use_container_width=True)
 
 with financial_tab:
     st.subheader("Selected financial metrics")
