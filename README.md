@@ -17,7 +17,7 @@ DealForge AI demonstrates how I translate an investment-banking workflow into a 
 2. Read the [portfolio case study](docs/CASE_STUDY.md).
 3. Inspect the [sample adjusted valuation summary](sample_outputs/adjusted_valuation_summary.json).
 4. Read the [sample investment memo](sample_outputs/investment_memo.md).
-5. Review the [architecture](docs/ARCHITECTURE.md) and [interview guide](docs/INTERVIEW_GUIDE.md).
+5. Review the [architecture](docs/ARCHITECTURE.md), [interview guide](docs/INTERVIEW_GUIDE.md), and [resume snippets](docs/RESUME_AND_INTERVIEW_SNIPPETS.md).
 
 ## Why I built it
 
@@ -157,6 +157,10 @@ The included synthetic case produces an adjusted EV range of **INR 45,000–80,0
 - [Portfolio case study](docs/CASE_STUDY.md)
 - [Technical architecture](docs/ARCHITECTURE.md)
 - [Interview guide](docs/INTERVIEW_GUIDE.md)
+- [Resume and interview snippets](docs/RESUME_AND_INTERVIEW_SNIPPETS.md)
+- [Screenshot capture guide](docs/SCREENSHOT_GUIDE.md)
+- [LinkedIn launch post draft](docs/LINKEDIN_LAUNCH_POST.md)
+- [Portfolio-plus release notes](docs/V1_0_PORTFOLIO_PLUS_RELEASE_NOTES.md)
 - [Public/private product boundary](docs/PRODUCT_BOUNDARY.md)
 - [Security and limitations](SECURITY.md)
 - [Portfolio evaluation notice](NOTICE.md)
