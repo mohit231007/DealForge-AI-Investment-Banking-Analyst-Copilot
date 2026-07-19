@@ -126,7 +126,7 @@ with st.sidebar:
     company_file = st.file_uploader("company_financials.csv", type="csv", disabled=use_samples)
     peer_file = st.file_uploader("peer_comps.csv", type="csv", disabled=use_samples)
     precedent_file = st.file_uploader("precedent_transactions.csv", type="csv", disabled=use_samples)
-    generate = st.button("Regenerate portfolio-plus deal pack", type="primary", use_container_width=True)
+    generate = st.button("Regenerate portfolio-plus deal pack", type="primary", width="stretch")
     st.divider()
     st.caption("Public portfolio repo: synthetic demo only. Private Algosphere product remains separate.")
 
@@ -172,6 +172,21 @@ audit = summary["valuation_input_audit"]
 recommendations = summary["valuation_adjustment_recommendations"]
 source_confidence = summary["source_confidence"]
 consistency = summary["consistency_checks"]
+source_index = summary.get("source_index", {"documents": []})
+citation_map = summary.get("citation_map")
+if not isinstance(citation_map, dict):
+    citation_map = {
+        "citations": [
+            {
+                "citation_id": row.get("document_id", f"DOC{index:03d}"),
+                "file_name": row.get("file_name", row.get("name", "synthetic source")),
+                "source_type": row.get("source_type", "synthetic_portfolio_source"),
+                "preview": row.get("description", "Synthetic source row used for public portfolio demonstration."),
+            }
+            for index, row in enumerate(source_index.get("documents", []), start=1)
+            if isinstance(row, dict)
+        ]
+    }
 
 st.markdown(
     f"""
@@ -307,35 +322,35 @@ with dashboard_tab:
 
 with source_tab:
     st.subheader("Source index")
-    st.dataframe(pd.DataFrame(summary["source_index"]["documents"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(source_index.get("documents", [])), width="stretch")
     st.subheader("Citation map preview")
-    st.dataframe(pd.DataFrame(summary["citation_map"]["citations"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(citation_map.get("citations", [])), width="stretch")
 
 with financial_tab:
     st.subheader("Selected financial metrics")
-    st.dataframe(pd.DataFrame(summary["financial_extract"]["metrics"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(summary["financial_extract"]["metrics"]), width="stretch")
 
 with comps_tab:
     st.subheader("Comparable-company QA")
-    st.dataframe(pd.DataFrame(summary["peer_review_rows"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(summary["peer_review_rows"]), width="stretch")
 
 with precedents_tab:
     st.subheader("Precedent-transaction QA")
-    st.dataframe(pd.DataFrame(summary["precedent_review_rows"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(summary["precedent_review_rows"]), width="stretch")
 
 with confidence_tab:
     st.subheader("Source confidence ladder")
-    st.dataframe(pd.DataFrame(source_confidence["rows"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(source_confidence["rows"]), width="stretch")
 
 with audit_tab:
     st.subheader("Valuation input audit")
-    st.dataframe(pd.DataFrame(audit["checks"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(audit["checks"]), width="stretch")
     st.subheader("Adjustment recommendations")
-    st.dataframe(pd.DataFrame(recommendations["recommendations"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(recommendations["recommendations"]), width="stretch")
 
 with consistency_tab:
     st.subheader("Cross-artifact consistency")
-    st.dataframe(pd.DataFrame(consistency["checks"]), use_container_width=True)
+    st.dataframe(pd.DataFrame(consistency["checks"]), width="stretch")
 
 with preview_tab:
     st.subheader("Adjusted valuation summary JSON")
@@ -347,7 +362,7 @@ with downloads_tab:
         data=result.bundle_path.read_bytes(),
         file_name=result.bundle_path.name,
         mime="application/zip",
-        use_container_width=True,
+        width="stretch",
     )
     st.subheader("Generated artifacts")
     for artifact in result.artifacts:
