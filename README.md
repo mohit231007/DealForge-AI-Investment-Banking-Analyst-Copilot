@@ -2,9 +2,9 @@
 
 **A portfolio-grade finance automation project by Mohit Bhatnagar.**
 
-DealForge AI demonstrates how I translate an investment-banking workflow into a tested software product: structured financial inputs are validated, adjusted, and compiled into analyst work products such as a valuation summary, investment memo, due-diligence request list, Excel model, PowerPoint pitchbook, and portable deal-pack bundle.
+DealForge AI demonstrates how I translate an investment-banking workflow into a tested software product: structured financial inputs are validated, adjusted, and compiled into analyst work products such as valuation QA, source confidence, corrected workpapers, Excel model, PowerPoint pitchbook, investment memo, IC memo, diligence request list, consistency checks, and a checksum-verified deal-pack bundle.
 
-> This public repository is a **sanitized portfolio edition** built with synthetic data. The broader commercial product is maintained privately under **The Algosphere**.
+> This public repository is a **portfolio-plus synthetic edition**. It is intentionally close to the visible workflow depth of the private DealForge workbench, while keeping customer-data handling, commercial integrations, private Algosphere product code, and confidential sources out of the public repository.
 
 [![CI](https://github.com/mohit231007/DealForge-AI-Investment-Banking-Analyst-Copilot/actions/workflows/ci.yml/badge.svg)](https://github.com/mohit231007/DealForge-AI-Investment-Banking-Analyst-Copilot/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
@@ -13,11 +13,11 @@ DealForge AI demonstrates how I translate an investment-banking workflow into a 
 
 ## Two-minute recruiter review
 
-1. Read the [portfolio case study](docs/CASE_STUDY.md).
-2. Inspect the [sample adjusted valuation summary](sample_outputs/adjusted_valuation_summary.json).
-3. Read the [sample investment memo](sample_outputs/investment_memo.md).
-4. Review the [architecture](docs/ARCHITECTURE.md) and [interview guide](docs/INTERVIEW_GUIDE.md).
-5. Run `streamlit run app.py` for the interactive workflow.
+1. Run `streamlit run app.py` to view the banker-style control tower.
+2. Read the [portfolio case study](docs/CASE_STUDY.md).
+3. Inspect the [sample adjusted valuation summary](sample_outputs/adjusted_valuation_summary.json).
+4. Read the [sample investment memo](sample_outputs/investment_memo.md).
+5. Review the [architecture](docs/ARCHITECTURE.md) and [interview guide](docs/INTERVIEW_GUIDE.md).
 
 ## Why I built it
 
@@ -30,61 +30,86 @@ This project demonstrates my ability to combine:
 - Excel and PowerPoint automation;
 - data validation and QA;
 - analyst-friendly UX;
-- auditability and human-review controls.
+- auditability and human-review controls;
+- public/private product-boundary thinking.
 
-## What the portfolio edition generates
+## What the portfolio-plus edition generates
 
 ```text
 Synthetic company financials + peer comps + precedent transactions
                               ↓
-                    Input validation and QA
+                    Source index + citation map
                               ↓
-              Adjusted valuation-set construction
+      Financial extraction + comps + precedents + source confidence
                               ↓
-        Original vs adjusted medians and implied EV range
+          Valuation input audit + adjustment recommendations
                               ↓
- Investment memo + diligence list + Excel + PowerPoint + ZIP bundle
+  Corrected CSVs + adjusted valuation summary + consistency checks
+                              ↓
+   Excel model + PowerPoint pitchbook + memo + IC memo + diligence
+                              ↓
+               Checksum manifest + portable ZIP deal pack
 ```
 
 Generated artifacts:
 
-1. `01_company_profile.md`
-2. `02_investment_memo.md`
-3. `03_adjusted_valuation_summary.json`
-4. `04_due_diligence_request_list.md`
-5. `05_valuation_model.xlsx`
-6. `06_pitchbook.pptx`
-7. `07_manifest.json`
-8. `dealforge_portfolio_pack.zip`
+```text
+01_company_profile.md
+02_investment_memo.md
+03_source_index.json
+04_synthetic_document_chunks.jsonl
+05_due_diligence_red_flags.md
+06_audit_trail.md
+07_citation_map.json
+08_source_map.json
+09_validation_report.json
+10_valuation_model.xlsx
+11_pitchbook.pptx
+12_financial_extract.json
+13_comps_analysis.json
+14_precedent_transactions.json
+15_consistency_checks.json
+16_investment_committee_memo.md
+17_due_diligence_request_list.md
+18_source_confidence_ladder.json
+19_valuation_input_audit.json
+20_valuation_adjustment_recommendations.json
+21_corrected_peer_comps.csv
+22_corrected_precedent_transactions.csv
+23_adjusted_valuation_summary.json
+00_deal_pack_bundle_manifest.json
+```
 
 ## Recruiter snapshot
 
 | Capability | Evidence in this repository |
 |---|---|
-| Finance workflow design | Comparable-company and precedent-transaction QA |
-| Valuation reasoning | Original vs adjusted multiples and implied EV range |
-| Python engineering | Modular engine, CLI, Streamlit UI, tests |
-| Office automation | Generated `.xlsx` model and `.pptx` pitchbook |
-| Data quality | Target self-exclusion, sector checks, outlier/NM handling |
-| Product thinking | Clear public/private product boundary and commercial roadmap |
-| Communication | IC-style memo, diligence questions, architecture and case study |
+| Finance workflow design | Source pack, financial extract, comps, precedents, IC memo, diligence workflow |
+| Valuation reasoning | Original vs adjusted multiples, excluded rows, implied EV range |
+| Python engineering | Modular engine, CLI, Streamlit UI, tests, ZIP packaging |
+| Office automation | Generated `.xlsx` valuation model and `.pptx` pitchbook |
+| Data quality | Target self-exclusion, sector checks, outlier/NM handling, source review |
+| Product thinking | Public/private product boundary and future Algosphere commercial direction |
+| Communication | Memo, IC memo, diligence list, case study, interview guide |
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-    A[CSV financial inputs] --> B[Validation engine]
-    C[Peer comps] --> B
-    D[Precedent transactions] --> B
-    B --> E[Adjusted valuation summary]
-    E --> F[Investment memo]
-    E --> G[Excel model]
-    E --> H[PowerPoint pitchbook]
-    E --> I[Diligence request list]
-    F --> J[ZIP deal pack]
-    G --> J
-    H --> J
-    I --> J
+    A[CSV financial inputs] --> B[Source and citation layer]
+    C[Peer comps] --> D[Valuation input audit]
+    E[Precedent transactions] --> D
+    B --> F[Financial extraction]
+    F --> G[Adjusted valuation summary]
+    D --> G
+    G --> H[Excel model]
+    G --> I[PowerPoint pitchbook]
+    G --> J[Memo and IC memo]
+    G --> K[Diligence list]
+    H --> L[ZIP deal pack]
+    I --> L
+    J --> L
+    K --> L
 ```
 
 ## Quick start
@@ -93,6 +118,7 @@ flowchart LR
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
+python -m pytest
 python run_demo.py
 ```
 
@@ -102,12 +128,6 @@ Run the Streamlit interface:
 streamlit run app.py
 ```
 
-Run tests:
-
-```powershell
-python -m pytest
-```
-
 ## Sample data
 
 All included company, peer, and transaction names are fictional. The sample dataset is designed to demonstrate:
@@ -115,9 +135,12 @@ All included company, peer, and transaction names are fictional. The sample data
 - target-company self-inclusion detection;
 - sector mismatch exclusion;
 - `NM` EBITDA handling;
+- source confidence / source-verification flags;
+- valuation input audit warnings;
+- adjustment recommendations;
+- corrected peer and precedent workpapers;
 - original versus adjusted valuation medians;
-- mixed transaction-unit review warnings;
-- source-verification flags.
+- mixed transaction-unit review warnings.
 
 The included synthetic case produces an adjusted EV range of **INR 45,000–80,000 crore** after QA exclusions. This is a workflow demonstration, not a real company valuation.
 
@@ -125,9 +148,9 @@ The included synthetic case produces an adjusted EV range of **INR 45,000–80,0
 
 - The public edition does not ingest confidential data rooms.
 - It does not connect to paid market-data or transaction databases.
+- It does not include private Algosphere product orchestration, security, billing, or customer-data workflows.
 - It does not provide investment advice, a fairness opinion, or a certified valuation.
 - Outputs are analytical starter work products and require human review.
-- The private Algosphere product contains a broader workflow and is not published here.
 
 ## Documentation
 
